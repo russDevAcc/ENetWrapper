@@ -1,7 +1,43 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release;SERVER_DEBUG;SERVER_RELEASE;CLIENT_DEBUG;CLIENT_RELEASE</Configurations>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
+
+
+	  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SERVER_DEBUG|AnyCPU'">
+		<DefineConstants>TRACE;SERVER</DefineConstants>
+		<OutputPath>bin\SERVER_DEBUG\</OutputPath>
+	  </PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DefineConstants>TRACE</DefineConstants>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='CLIENT_DEBUG|AnyCPU'">
+	  <DefineConstants>TRACE;CLIENT</DefineConstants>
+	  <OutputPath>bin\CLIENT_DEBUG\</OutputPath>
+	</PropertyGroup>
+	
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DefineConstants>TRACE</DefineConstants>
+	</PropertyGroup>
+	
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='CLIENT_RELEASE|AnyCPU'">
+	  <DefineConstants>CLIENT</DefineConstants>
+	  <Optimize>True</Optimize>
+	  <OutputPath>bin\CLIENT_RELEASE\</OutputPath>
+	</PropertyGroup>
+	
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SERVER_RELEASE|AnyCPU'">
+	  <DefineConstants>SERVER</DefineConstants>
+	  <Optimize>True</Optimize>
+	  <OutputPath>bin\SERVER_RELEASE\</OutputPath>
+	</PropertyGroup>
 
 </Project>

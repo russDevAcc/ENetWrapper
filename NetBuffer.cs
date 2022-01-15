@@ -1,4 +1,5 @@
-﻿using System.Buffers;
+﻿using ENet;
+using NetStack.Buffers;
 using System.Runtime.CompilerServices;
 
 namespace NetLib
@@ -15,6 +16,8 @@ namespace NetLib
 
 		private static ArrayPool<uint> bytes;
 
+		private static ArrayPool<byte> packetBytes;
+
 		private const int defaultCapacity = 375; // 375 * 4 = 1500 bytes
 		private const int stringLengthBits = 8;
 		private const int stringLengthMax = (1 << stringLengthBits) - 1; // 255
@@ -25,6 +28,7 @@ namespace NetLib
 		public static void Init()
 		{
 			bytes = ArrayPool<uint>.Create(1024, 1024);
+			packetBytes = ArrayPool<byte>.Create(1024, 1024);
 		}
 		private static NetBufferData CreateBuffer(int capacity)
 		{
@@ -116,6 +120,7 @@ namespace NetLib
 
 			return (uint)result;
 		}
+		
 
 		public static int ToArray(ref NetBufferData data, byte[] bytes)
 		{
