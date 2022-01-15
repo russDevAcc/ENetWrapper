@@ -42,7 +42,7 @@ namespace NetLib
 #if SERVER
         public void SendMessage(Peer target, ref NetBufferData buffer, PacketFlags flags)
 #elif CLIENT
-        public void SendMessage(ref NetBufferData buffer, flags)
+        public void SendMessage(ref NetBufferData buffer, PacketFlags flags)
 #endif
         {
             var packet = default(Packet);
