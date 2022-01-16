@@ -39,5 +39,15 @@
 	  <Optimize>True</Optimize>
 	  <OutputPath>bin\SERVER_RELEASE\</OutputPath>
 	</PropertyGroup>
+	
+
+	<ItemGroup>
+	  <None Update="enet.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="smmalloc.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
 
 </Project>

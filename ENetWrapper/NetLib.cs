@@ -1,5 +1,6 @@
 using ENet;
 using NetStack.Buffers;
+using System;
 
 namespace NetLib
 {
@@ -9,8 +10,13 @@ namespace NetLib
         private ArrayPool<byte> bytes;
 
 
+     
+
+        
         public NetSocketBase(int maxArrayLength, int maxArraysPerBucket)
         {
+           
+
             bytes = ArrayPool<byte>.Create(maxArrayLength, maxArraysPerBucket);
             NetBuffer.Init();
             ENet.Library.Initialize();
@@ -22,6 +28,11 @@ namespace NetLib
         {
             Address address = ParseIPAndAddress(ip, port);
             host.Create(address, maxConnections, 32);
+        }
+#elif CLIENT
+        public void InitializeClient()
+        {
+            host.Create(1, 32);
         }
 #endif
 
@@ -103,11 +114,9 @@ namespace NetLib
         public void Tick()
         {
             ENet.Event netEvent = default;
-            if(host.CheckEvents(out netEvent) > 0)
-            { 
-                host.Service(0, out netEvent);
-                HandleNetEvent(ref netEvent);
-            }
+            host.Service(0, out netEvent);
+            HandleNetEvent(ref netEvent);
+            
         }
 
 
@@ -138,8 +147,10 @@ namespace NetLib
                     var data = bytes.Rent(netEvent.Packet.Length);
                     netEvent.Packet.CopyTo(data);
                     var netBuffer = NetBuffer.FromArray(data, data.Length);
-                    OnSocketReceived(netEvent.Peer, ref netBuffer);
+                    var id = NetBuffer.ReadUShort(ref netBuffer);
+                    OnSocketReceived(netEvent.Peer, id, ref netBuffer);
                     bytes.Return(data, true);
+                    NetBuffer.Destroy(ref netBuffer);
                     break;
             }
         }
@@ -147,6 +158,6 @@ namespace NetLib
         public abstract void OnSocketConnect(Peer peer);
         public abstract void OnSocketDisconnect(Peer peer);
         public abstract void OnSocketTimeout(Peer peer);
-        public abstract void OnSocketReceived(Peer peer, ref NetBufferData data);
+        public abstract void OnSocketReceived(Peer peer, ushort messageID, ref NetBufferData data);
     }
 }
