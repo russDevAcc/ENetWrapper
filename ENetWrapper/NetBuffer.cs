@@ -16,7 +16,6 @@ namespace NetLib
 
 		private static ArrayPool<uint> bytes;
 
-		private static ArrayPool<byte> packetBytes;
 
 		private const int defaultCapacity = 375; // 375 * 4 = 1500 bytes
 		private const int stringLengthBits = 8;
@@ -28,7 +27,7 @@ namespace NetLib
 		public static void Init()
 		{
 			bytes = ArrayPool<uint>.Create(1024, 1024);
-			packetBytes = ArrayPool<byte>.Create(1024, 1024);
+			
 		}
 		private static NetBufferData CreateBuffer(int capacity)
 		{

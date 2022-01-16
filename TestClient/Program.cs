@@ -18,6 +18,7 @@ namespace TestClient
             NetBuffer.AddBool(ref buf, false);
             NetBuffer.AddUShort(ref buf, ushort.MaxValue);
 
+            Console.WriteLine(NetBuffer.ReadUShort(ref buf));
             Console.WriteLine(NetBuffer.ReadInt(ref buf));
             Console.WriteLine(NetBuffer.ReadBool(ref buf).ToString());
             Console.WriteLine(NetBuffer.ReadUShort(ref buf));

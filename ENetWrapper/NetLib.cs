@@ -67,7 +67,7 @@ namespace NetLib
 #elif CLIENT
             host.Broadcast(0, ref packet);
 #endif
-            bytes.Return(data, true);
+            bytes.Return(data);
         }
 
 
@@ -131,6 +131,7 @@ namespace NetLib
             switch(netEvent.Type)
             {
                 case EventType.Connect:
+
                     OnSocketConnect(netEvent.Peer);
                     break;
 
@@ -143,8 +144,8 @@ namespace NetLib
                     break;
 
                 case EventType.Receive:
-                   
-                    var data = bytes.Rent(netEvent.Packet.Length);
+
+                     var data = bytes.Rent(netEvent.Packet.Length);
                     netEvent.Packet.CopyTo(data);
                     var netBuffer = NetBuffer.FromArray(data, data.Length);
                     var id = NetBuffer.ReadUShort(ref netBuffer);
