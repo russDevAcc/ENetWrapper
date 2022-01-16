@@ -42,6 +42,32 @@
 	
 
 	<ItemGroup>
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\Address.cs" Link="Address.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\Callbacks.cs" Link="Callbacks.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\ENet.cs" Link="ENet.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\ENetAddress.cs" Link="ENetAddress.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\ENetCallbacks.cs" Link="ENetCallbacks.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\ENetEvent.cs" Link="ENetEvent.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\Event.cs" Link="Event.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\EventType.cs" Link="EventType.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\Extensions.cs" Link="Extensions.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\Host.cs" Link="Host.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\Library.cs" Link="Library.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\Packet.cs" Link="Packet.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\PacketFlags.cs" Link="PacketFlags.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\Peer.cs" Link="Peer.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\ENet\PeerState.cs" Link="PeerState.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\NetBuffer.cs" Link="NetBuffer.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\NetLib.cs" Link="NetLib.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\NetStack\ArrayPool.cs" Link="ArrayPool.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\NetStack\ArrayPoolEventSource.cs" Link="ArrayPoolEventSource.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\NetStack\DefaultArrayPool.cs" Link="DefaultArrayPool.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\NetStack\DefaultArrayPoolBucket.cs" Link="DefaultArrayPoolBucket.cs" />
+	  <Compile Include="..\..\com.russdevacc.enetwrapper\Runtime\NetStack\Utilities.cs" Link="Utilities.cs" />
+	</ItemGroup>
+	
+
+	<ItemGroup>
 	  <None Update="enet.dll">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
